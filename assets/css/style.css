@@ -1,0 +1,12 @@
+#quizbox {
+    margin: auto;
+    background-color: white;
+    position:absolute;
+    top: 100px;
+    right: 300px;
+    left: 300px;
+    width: 600px;
+    height: 600px;
+    border: 10px solid rgb(63, 82, 63);
+    text-align: center;
+}
