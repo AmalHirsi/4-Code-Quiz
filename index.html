@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Code Quiz</title>    
 </head>
+
+<body>
+    <header>
+        <a id="viewhighscore">View Highscore <i ></i></a>
+        <div id="timer"> Time: <span id="time">90</span></div>
+    </header>
 <main>
     
 <div id="quizbox">
@@ -19,36 +25,42 @@
 </div>
 </div>
 </header>
-<div id="timer"> Quiz time: <span id="time">90</span></div>
+
     <div class="quiz-container" id="quiz">
-    <div class="quiz-header">
+    <div id= "question" class="question">
         <h2 id="question">Question:</h2>
     </div>
-<ul>
-<li>
-    <input type="radio" name="answer" id="a" class="answer">
-    <label for="a" id="texta">Answer 1</label>
-</li>
+<ul id="choices"></ul>
+<div class="option-container">
+    <button class="answer" onclick="" id="ans1">answer1</button>
 
-<li>
-    <input type="radio" name="answer" id="b" class="answer">
-    <label for="b" id="textb">Answer 1</label>
-</li>
+    <button class="answer" id="ans2">answer2</button>
 
-<li>
-    <input type="radio" name="answer" id="c" class="answer">
-    <label for="c" id="textc">Answer 1</label>
-</li>
+    <button class="answer" id="ans3">answer3</button>
 
-<li>
-    <input type="radio" name="answer" id="a" class="answer">
-    <label for="d" id="textd">Answer 1</label>
-</li>
-
-</ul>
-<div>
-<button id="quizstart"> Submit</button>
+    <button class="answer" id="ans4">answer5</button>
 </div>
+<button id="submit" class="next">Submit</button>
+</div>
+<div hidden id="score-container">
+    <h>You have finished the Quiz!</h>
+    <p>Your final score is: <span id="score"></span></p>
+    <form class="inline-form" id="resultform">
+        <label>Enter you name.</label>
+        <input type="text" id="name">
+        <button id="submit2" class="button">Submit</button>
+    </form>
+</div>
+
+    <div hidden id="Highscore" class="card">
+        <h2>Highscores</h2>
+        <div id="finalscore"></div>
+    <div>
+        <button id="back-button" class="button">Go Back</button>
+        <button id="clear-button" class="button">Go Back</button>
+    </div>
+    </div>
+    
 </div>
 </div>
 </main>
