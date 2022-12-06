@@ -9,29 +9,28 @@
 </head>
 
 <body>
-    <header>
+    <div>
         <a id="viewhighscore">View Highscore <i ></i></a>
         <div id="timer"> Time: <span id="time">90</span></div>
-    </header>
+    </div>
 <main>
-    
-<div id="quizbox">
-    <h2> Welcome to Code Quiz</h2>
-    <div>
-    <p>Answer these questions to test your knowledge. Remember any incorrect answer will penalize your quiz time by 10 seconds
-    <div>
-        <p1>GOOD LUCK</p1>
-    </p>
-</div>
-</div>
-</header>
 
-    <div class="quiz-container" id="quiz">
+      <!-- start quiz section -->
+<div class="startbox" id="start_box">
+    <h2> Welcome to Code Quiz</h2>
+    <p> Answer these questions to test your knowledge. Remember any incorrect answer will penalize your quiz time by 10 seconds
+    </p>
+        <p1>GOOD LUCK</p1>
+      <div class="start_btn" id="start_quiz"><button>Start Quiz</button></div>
+</div>
+</div>
+
+     <!--  question section -->
+    <div class="container" id="quiz">
     <div id= "question" class="question">
         <h2 id="question">Question:</h2>
-    </div>
-<ul id="choices"></ul>
-<div class="option-container">
+    </div class="answer-box" id="answerbox">
+<div id="choices" class="option-container">
     <button class="answer" onclick="" id="ans1">answer1</button>
 
     <button class="answer" id="ans2">answer2</button>
@@ -42,22 +41,24 @@
 </div>
 <button id="submit" class="next">Submit</button>
 </div>
-<div hidden id="score-container">
+
+     <!--  end of quiz section -->
+<div class= "container" id="scorebox">
     <h>You have finished the Quiz!</h>
     <p>Your final score is: <span id="score"></span></p>
     <form class="inline-form" id="resultform">
-        <label>Enter you name.</label>
-        <input type="text" id="name">
-        <button id="submit2" class="button">Submit</button>
+        <label>Enter initials.</label>
+        <input type="text" id="initial-input">
+        <button id="initial_button" class="button">Submit</button>
     </form>
 </div>
-
-    <div hidden id="Highscore" class="card">
+      <!--  highscore section -->
+    <div class="card" id="Highscore" class="card">
         <h2>Highscores</h2>
         <div id="finalscore"></div>
     <div>
-        <button id="back-button" class="button">Go Back</button>
-        <button id="clear-button" class="button">Go Back</button>
+        <button id="back_button" class="button">Go Back</button>
+        <button id="clear_button" class="button">Go Back</button>
     </div>
     </div>
     
