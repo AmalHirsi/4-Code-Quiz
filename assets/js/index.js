@@ -30,12 +30,12 @@ const  questionEl = document.querySelector("#question");
 const  answersEl = document.querySelector("#choices");
 const  scoreBox = document.querySelector("#score_box")
 const  quizScore = document.querySelector("#score");
-const  submitInitialsButton = document.querySelector("initial_button");
+const  submitInitialsButton = document.querySelector("#initial_button");
 const  initialsEl = document.querySelector("#initial_input");
 const  highscoreEl= document.querySelector("#highscore");
 const  scoreEl = document.querySelector("#finalscore");
-const  backButton = document.querySelector("back_button");
-const  clearScoreButton = document.querySelector("#clear-button");
+const  backButton = document.querySelector("#back_button");
+const  clearScoreButton = document.querySelector("#clear_button");
 
 const  viewHighscore = document.querySelector("#viewhighscore");
 const  timerEl = document.querySelector("#time");
@@ -51,11 +51,11 @@ function startTimer() {
        interval = setInterval(function () {
         timeLeft++;
         timerEl.textContent = timeGiven - timeLeft;
-        if (timeLeft >= questions.length); {
-            thisQuestion = questions.length;
+        if (timeLeft >= questions.length) {
+            //thisQuestion = questions.length;
             nextQuestion();
         }
-    }, 1000);
+    }, 3000);
 }
 
 function stopTimer() {
@@ -63,23 +63,32 @@ function stopTimer() {
 
 }
 
+function hide(element) {
+    element.style.display = "none";
+}
+
+function show(element) {
+    element.style.display = "block"
+}
+
 startbutton.addEventListener("click", function () {
     hide(startBox);
     startTimer();
-    renderQuestion() 
+    //renderQuestion() 
+    showQuestion();
     show(quiz);
 });
 
 function nextQuestion() {
    thisQuestion++;
-    if (thisQuestion <questionEl.length) {
+    if (thisQuestion <questions.length) {
        showQuestion();
     }
     else {
         stopTimer();
         if ((timeGiven - timeLeft) > 0)
         score += (timeGiven - timeLeft);
-        ScoreEl.textContent = score;
+        scoreEl.textContent = score;
         hide(quizEl);
         show(scoreEl);
         timerEl.textContent = 0;
@@ -87,13 +96,13 @@ function nextQuestion() {
  }
 
  function checkAnswer(answer) {
-    if (question[thisQuestion].asnwer == questions[thisQuestion].choices[asnwer.id]) {
+    if (answer.textContent == questions[thisQuestion].choices[answer.id]) {
         score +=5;
-        displayMessage("That is the correct answer!");
+       // displayMessage("That is the correct answer!");
     }
     else {
         timeLeft += 10;
-        displayMessage("I'm sorry");
+       // displayMessage("I'm sorry");
     }
     }
  
@@ -102,7 +111,7 @@ function nextQuestion() {
 function showQuestion() {
    question.textContent = questions[thisQuestion].title;
    for (i = 0; i < answersEl.children.length; i++) {
-    answersEl.children(i).children[0].textContent = '${(i +1)}: ${questions[thisQuestion].choices[i]}'
+    answersEl.children[i].textContent = `${(i +1)}: ${questions[thisQuestion].choices[i]}`
     }
 }
 
@@ -114,7 +123,7 @@ function showHighScores() {
         let scoreItem = document.createElement("div");
         scoreItem.className += "row mb-3 p-2";
         console.log(scoreItem)
-        scoreItem.textContent = '${(i + 10)}. ${highScores[i].username} - ${highScores[i].userScore}';
+        scoreItem.textContent = `${(i + 10)}. ${highScores[i].username} - ${highScores[i].userScore}`;
         scoreEl.appendChild(scoreItem);
     }
 }
@@ -122,7 +131,7 @@ function showHighScores() {
 
 answersEl.addEventListener("click", function (e) {
     if (e.target.matches("button")) {
-        checkAnswers(e.target);
+        checkAnswer(e.target);
         nextQuestion();
     }
 });
@@ -133,14 +142,14 @@ submitInitialsButton.addEventListener("click", function () {
         let userScore = { username: initValue, userScore: score };
         initialsEl.value = '';
         highscoreEl = JSON.parse(localStorage.getItem("scores")) || [];
-        hide(ScoreEl);
+        hide(scoreEl);
         showHighScores();
         reset();
         }
     });
 
     backButton.addEventListener("click", function () {
-        hide(highScore);
+        hide(highscoreEl);
         show(startBox);
     });
 
